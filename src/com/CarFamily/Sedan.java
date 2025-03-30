@@ -5,7 +5,6 @@ public class Sedan extends Car{
     private int seatCapacity=5;
     private boolean stateOfVehicle=false;
     private int speed=100;
-    private int fuel=60;
 
 
     @Override
@@ -44,6 +43,7 @@ public class Sedan extends Car{
 
     @Override
     public int getFuelLevel() {
+        int fuel = 60;
         return fuel;
     }
 
