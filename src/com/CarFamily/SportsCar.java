@@ -8,10 +8,10 @@ public class SportsCar extends Car {
     private int fuel=70;
     private final int  maxSpeed=350;
     private boolean boost =false;
-    public SportsCar(boolean stateOfVehicle,int speed, int fuel){
-        this.stateOfVehicle=stateOfVehicle;
-        this.speed=speed;
-        this.fuel=fuel;
+    public SportsCar(boolean stateOfVehicle,int speed, int fuel) {
+        this.stateOfVehicle = stateOfVehicle;
+        this.speed = speed;
+        this.fuel = fuel;
     }
     @Override
     public void start() {
@@ -71,20 +71,29 @@ public class SportsCar extends Car {
     public void breakCheck() {
         System.out.println("Breakpad is fine for next service!");
     }
-    public void enableBoost(){
-        boost= true;
-        System.out.println("The boost is enabled.");
+    public void enableBoost() {
+        boost = true;
+        speed += 50; // or some logic
+        System.out.println(STR."The boost is enabled. Speed increased to \{speed}kmph.");
     }
+
     public static void main(String[] args) {
-        SportsCar bugatti = new SportsCar(false,100,80);
+        Race race =()-> System.out.println("Started Racing ZUIII...");
+        race.startRace();
+        SportsCar bugatti = new SportsCar(false, 100, 80);
         bugatti.start();
         bugatti.accelerate(10);
         bugatti.decelerate(10);
-        System.out.println("The fuel level in the car is "+bugatti.getFuelLevel()+"percent");
+        System.out.println(STR."The fuel level in the car is \{bugatti.getFuelLevel()}percent");
         bugatti.oilChange();
         bugatti.batteryCheck();
         bugatti.tyrePressureCheck();
         bugatti.breakCheck();
         bugatti.enableBoost();
     }
+}
+
+@FunctionalInterface
+interface Race{
+    public void startRace();
 }
